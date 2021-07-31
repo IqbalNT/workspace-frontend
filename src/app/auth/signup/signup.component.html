@@ -1,0 +1,128 @@
+<h3 mat-dialog-title>Add Service/Spare Parts</h3>
+
+<div>
+  <mat-dialog-content>
+    <form [id]="formId" [formGroup]="form" (ngSubmit)="addUser(form.value)">
+      <div
+        fxLayout="column"
+        fxLayout.xs="column"
+        fxLayout.sm="column"
+        class="tab"
+      >
+        <div
+          fxLayout="column wrap"
+          fxLayoutGap="10px"
+          fxFlex="100%"
+          fxFlex.sm="50%"
+          fxLayout.lt-sm="column"
+          fxFlex.xs="100%"
+          fxLayoutAlign="flex-start"
+        >
+          <mat-form-field
+            fxFlex="0 1 calc(66% - 10px)"
+            fxFlex.lt-md="0 1 calc(100% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="fill"
+          >
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="Enter your name"
+              formControlName="name"
+              required
+            />
+            <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+              <ng-container *ngIf="name.hasError('required')"
+                >Name is required</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            fxFlex="0 1 calc(33% - 10px)"
+            fxFlex.lt-md="0 1 calc(100% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="fill"
+          >
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Enter your email"
+              formControlName="email"
+              required
+            />
+            <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+              <ng-container *ngIf="email.hasError('required')"
+                >Email is required</ng-container
+              >
+              <ng-container *ngIf="email.hasError('email')"
+                >Invalid Email address</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            fxFlex="0 1 calc(10% - 10px)"
+            fxFlex.lt-md="0 1 calc(100% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="fill"
+          >
+            <mat-label>Phone Number</mat-label>
+            <input
+              matInput
+              placeholder="Enter your phone number"
+              formControlName="cellNo"
+              required
+            />
+            <mat-error
+              *ngIf="cellNo.invalid && (cellNo.dirty || cellNo.touched)"
+            >
+              <ng-container *ngIf="cellNo.hasError('required')"
+                >Phone Nummber is required</ng-container
+              >
+              <ng-container *ngIf="cellNo.hasError('cellNumber')"
+                >Invalid phone no.</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            fxFlex="0 1 calc(10% - 10px)"
+            fxFlex.lt-md="0 1 calc(100% - 10px)"
+            fxFlex.lt-sm="100%"
+            fxFlex.xs="100%"
+            appearance="fill"
+          >
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Enter your Password"
+              formControlName="password"
+              required
+            />
+            <mat-error
+              *ngIf="password.invalid && (password.dirty || password.touched)"
+            >
+              <ng-container *ngIf="password.hasError('required')"
+                >Phone Nummber is required</ng-container
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>
+
+<mat-dialog-actions style="float: right; margin-right: 3px" fxLayoutGap="10px">
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button
+    [disabled]="asyncService?.isLoading | async"
+    [attr.form]="formId"
+    type="submit"
+    class="mat-raised-button mat-primary"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

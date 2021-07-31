@@ -1,0 +1,34 @@
+<mat-toolbar
+  style="
+    height: 60px;
+    background: transparent
+      linear-gradient(90deg, #264a97 0%, #03a7df 49%, #264b98 100%) 0% 0%
+      no-repeat padding-box;
+  "
+>
+  <div style="background-color: aliceblue;">
+    <img
+      src="../../assets/images/workspace.png"
+      style="width: 93px; height: 40px; padding: 5px; "
+      alt="logo"
+    />
+  </div>
+
+  <span class="example-spacer text-center text-light"> Microblogging Platform</span>
+  <avatar [matMenuTriggerFor]="menu" [size]="35"></avatar>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      {{ userInfo.name }}
+    </button>
+    <button mat-menu-item (click)="onLogOut()">Logout</button>
+  </mat-menu>
+</mat-toolbar>
+
+<app-blog></app-blog>
+
+<div class="footer">
+  <div>
+    &copy; Copyright WorkSpace Infotech Ltd TASK || Designed & Developed by Md.
+    Iqbal Hossain.
+  </div>
+</div>

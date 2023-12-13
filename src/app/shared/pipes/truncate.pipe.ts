@@ -15,4 +15,5 @@ export class TruncatePipe implements PipeTransform {
     }
     return `${value.substr(0, limit)}${ellipsis}`;
   }
+
 }
